@@ -41,7 +41,7 @@ app.MapGet("/hello/{name}", (string name) =>
 
 app.MapGet("/todos", async (AppDbContext db) =>
 {
-    var todos = await db.todos
+    var todos = await db.Todos
     .OrderByDescending(t => t.CreatedAt)
     .ToListAsync();
 
