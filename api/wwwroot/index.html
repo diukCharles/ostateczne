@@ -65,6 +65,12 @@
 
   <form id="todo-form">
     <input type="text" id="todo-title" placeholder="Nowe zadanie..." required />
+    <select id="todo-priority">
+      <input type="text" id="todo-title" placeholder="Nowe zadanie.." required/>
+        <option value="1">Normalny</option>
+        <option value="2">Ważny</option>
+        <option value="3">Pilny</option>
+    </select>
     <button type="submit">Dodaj</button>
   </form>
 
@@ -118,6 +124,11 @@
           meta.textContent = 'Utworzono: ' + new Date(todo.createdAt).toLocaleString();
         }
 
+        const pr = document.createElement('div')
+        pr.className = 'priority'
+        pr.textContent = 'Priority: '+ todo.priority;        
+        
+        main.appendChild(pr);
         main.appendChild(checkbox);
         main.appendChild(title);
         main.appendChild(meta);
@@ -167,7 +178,8 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             title: title,
-            isDone: false
+            isDone: false,
+            priority: parseInt(document.getElementById('todo-priority').value)
           })
         });
         if (!res.ok) {
