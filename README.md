@@ -1,8 +1,8 @@
 1. **Sklonuj projekt i wejdź do katalogu:**
 
    ```bash
-   git clone 
-   cd restapi_dotnet_priority
+   git clone git@github.com:diukCharles/ostateczne.git
+   cd ostateczne
    docker-compose build
    docker-compose up -d
 
